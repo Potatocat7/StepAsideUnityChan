@@ -2,34 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinController : MonoBehaviour {
-
-    //コインが画面外に出るときのUnitychanとのｚ距離
+public class TrafficConeController : MonoBehaviour {
+    //コーンが画面外に出るときのUnitychanとのｚ距離
     private float visiblePosZ = -7.0f;
 
     //Unitychanのオブジェクト読み込みよう
     private GameObject UnitychanObj;
-
 
     // Use this for initialization
     void Start () {
         //Unitychanのオブジェクト情報所得
         this.UnitychanObj = GameObject.Find("unitychan");
 
-        //回転を開始する角度を設定
-        this.transform.Rotate(0, Random.Range(0, 360), 0);
     }
 
     // Update is called once per frame
     void Update () {
-        //回転
-        this.transform.Rotate(0, 3, 0);
         //画面外に来たらこのオブジェクトをデストロイ
-        if ( this.UnitychanObj.transform.position.z > this.transform.position.z - this.visiblePosZ)
+        if (this.UnitychanObj.transform.position.z > this.transform.position.z - this.visiblePosZ)
         {
             Destroy(gameObject);
         }
-
 
     }
 }
